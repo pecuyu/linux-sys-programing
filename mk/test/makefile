@@ -1,9 +1,13 @@
 ### makefile for this project ###
+#CUR_DIR      =  $(shell pwd)
+CUR_DIR      =  .
+ 
+SRC         =  $(CUR_DIR)/src
+INC         =  $(CUR_DIR)/inc
+OUTPUT_DIR  =  ${CUR_DIR}/out
+OBJS_DIR    =  ${OUTPUT_DIR}/obj
 
-OUTPUT_DIR=out
-OBJS_DIR=${OUTPUT_DIR}/obj
-SRC=src
-INC=inc
+CFLAGS      =  -I $(INC) -Wall -g -std=c99
 
 # make out dir if not exists
 ifneq ($(OUTPUT_DIR), $(wildcard $(OUTPUT_DIR)))
@@ -24,7 +28,7 @@ ${OUTPUT_DIR}/app:${objs}
 
 ${OBJS_DIR}/%.o:${SRC}/%.c
 	@echo "make $(@)"
-	gcc -o $(@) -c $(<) -I ${INC}
+	gcc -o $(@) -c $(<) ${CFLAGS}
 
 .PHONY:clean
 clean:
