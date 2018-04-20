@@ -15,11 +15,11 @@ ifneq ($(OUTPUT_DIR), $(wildcard $(OUTPUT_DIR)))
 $(shell mkdir ${OUTPUT_DIR} )
 endif
 
+# make out/obj dir if not exists
 ifneq ($(OBJS_DIR),$(wildcard $(OBJS_DIR)))
 $(shell mkdir ${OBJS_DIR} )
 endif
 
-# make out/obj dir if not exists
 objs=${OBJS_DIR}/main.o ${OBJS_DIR}/utils.o
 
 ${OUTPUT_DIR}/app:${objs}
